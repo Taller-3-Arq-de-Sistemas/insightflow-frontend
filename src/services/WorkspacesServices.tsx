@@ -14,7 +14,6 @@ export const WorkspacesServices = {
     async fetchWorkspaces(userId: string): Promise<WorkspaceListItemResponse[]> {
         try {
             const response = await workspacesClient.get<WorkspaceListItemResponse[]>(`workspaces/user/${userId}`);
-            // No hay lógica de paginación o ResponseAPI en este endpoint, retornamos directamente los datos.
             return response.data;
         } catch (error) {
             if (axios.isAxiosError(error)) {
@@ -53,9 +52,9 @@ export const WorkspacesServices = {
      * Obtiene los detalles de un workspace por su ID.
      * GET /api/workspaces/{id}
      */
-    async getWorkspaceById(id: string): Promise<WorkspaceResponse> {
+    async getWorkspaceById(Id: string): Promise<WorkspaceResponse> {
         try {
-            const response = await workspacesClient.get<WorkspaceResponse>(`workspaces/${id}`);
+            const response = await workspacesClient.get<WorkspaceResponse>(`workspaces/${Id}`);
             return response.data;
         } catch (error) {
             if (axios.isAxiosError(error)) {
@@ -66,12 +65,45 @@ export const WorkspacesServices = {
     },
 
     /**
-     * Actualiza los detalles de un workspace.
-     * UPDATE 
+     * Actualiza los detalles de un workspace (PATCH).
+     * PATCH /api/workspaces/{id}
+     * Nota: Utiliza FormData ya que el backend espera datos de formulario y potencialmente un archivo.
      */
+    async updateWorkspace(Id: string, formData: FormData): Promise<WorkspaceResponse> {
+        try {
+            const response = await workspacesClient.patch<WorkspaceResponse>(
+                `workspaces/${Id}`,
+                formData,
+                {
+                    headers: {
+                        // Asegura que Axios envíe el tipo de contenido correcto para archivos
+                        "Content-Type": "multipart/form-data"
+                    }
+                }
+            );
+            return response.data;
+        } catch (error) {
+            if (axios.isAxiosError(error)) {
+                throw new Error(error.response?.data?.Message || 'Error al actualizar el espacio de trabajo.');
+            }
+            throw error;
+        }
+    },
 
     /**
-     * Elimina un workspace por su ID.
-     * DELETE
+     * Elimina (Soft Delete) un workspace por su ID.
+     * DELETE /api/workspaces/{id}
      */
+    async deleteWorkspace(Id: string): Promise<void> {
+        try {
+            // El DELETE devuelve 204 No Content, por lo que no esperamos data.
+            await workspacesClient.delete(`workspaces/${Id}`);
+        } catch (error) {
+            if (axios.isAxiosError(error)) {
+                // El backend valida que solo el Propietario puede eliminar, si no lo es, lanza un error aquí (403 Forbidden).
+                throw new Error(error.response?.data?.Message || 'Fallo la eliminación del espacio de trabajo.');
+            }
+            throw error;
+        }
+    }
 };
