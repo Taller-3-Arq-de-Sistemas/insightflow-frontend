@@ -14,6 +14,12 @@ export const WorkspaceDetailPage = () => {
 
     const { workspace, isLoading, error, refetch } = useWorkspaceDetails(id || '');
 
+    if (typeof window === 'undefined' || !id) {
+        // En el servidor (build time) o si el ID aún no ha cargado.
+        // Esto le permite a Next.js construir el HTML sin que el hook falle.
+        return <div className="p-12 text-center">Cargando la página...</div>;
+    }
+
     // Si no hay ID o es inválido, mostramos un error o redireccionamos
     if (!id) {
         return <div className="p-12 text-red-600">Error: Identificador del espacio no proporcionado.</div>;
