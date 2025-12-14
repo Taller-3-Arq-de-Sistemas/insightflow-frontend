@@ -19,7 +19,6 @@ export const WorkspaceDetailPage = () => {
         return <div className="p-12 text-red-600">Error: Identificador del espacio no proporcionado.</div>;
     }
 
-    // ... (El resto de la lógica de carga, error y determinación de rol es la misma) ...
     const LOGGED_IN_USER_ID = process.env.NEXT_PUBLIC_TEST_USER_ID || 'd084f70c-238d-44a3-a7d0-1a7795325c34';
 
     if (isLoading) {
@@ -52,12 +51,10 @@ export const WorkspaceDetailPage = () => {
                 </h1>
 
                 <div className="flex space-x-3">
-                    {/* Botón de Edición (Será un componente de Dialog/Form) */}
                     {isOwner && (
                         <UpdateWorkspaceForm workspace={workspace} onSuccess={refetch} />
                     )}
 
-                    {/* Botón de Eliminación (Será un componente de Dialog/Button) */}
                     {isOwner && (
                         <DeleteWorkspaceButton workspaceId={id} workspaceName={workspace.name} />
                     )}

@@ -16,7 +16,6 @@ export const WorkspaceCard: React.FC<WorkspaceCardProps> = ({ workspace }) => {
                     <CardTitle className="text-lg">{workspace.name}</CardTitle>
                     <Badge variant="secondary">{workspace.role}</Badge>
                 </div>
-                {/* Asumo que Theme se incluirá en CardDescription si es necesario */}
             </CardHeader>
             <CardContent>
                 <Image
