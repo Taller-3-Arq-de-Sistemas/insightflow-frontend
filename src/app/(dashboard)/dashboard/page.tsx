@@ -14,19 +14,19 @@ export default function DashboardPage() {
   const inactiveUsers = users?.filter((u) => u.status === 'inactive').length || 0;
 
   const stats = [
-    { name: 'Total Users', value: totalUsers, icon: Users, color: 'bg-blue-500' },
-    { name: 'Active', value: activeUsers, icon: UserCheck, color: 'bg-green-500' },
-    { name: 'Inactive', value: inactiveUsers, icon: UserX, color: 'bg-red-500' },
-    { name: 'Recent', value: users?.slice(0, 5).length || 0, icon: Clock, color: 'bg-purple-500' },
+    { name: 'Total Usuarios', value: totalUsers, icon: Users, color: 'bg-blue-500' },
+    { name: 'Activos', value: activeUsers, icon: UserCheck, color: 'bg-green-500' },
+    { name: 'Inactivos', value: inactiveUsers, icon: UserX, color: 'bg-red-500' },
+    { name: 'Recientes', value: users?.slice(0, 5).length || 0, icon: Clock, color: 'bg-purple-500' },
   ];
 
   return (
     <div className="space-y-8">
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
+        <h1 className="text-2xl font-bold text-gray-900">Panel de Control</h1>
         <p className="mt-1 text-gray-600">
-          Overview of your users management system.
+          Resumen de tu sistema de gestión de usuarios.
         </p>
       </div>
 
@@ -57,23 +57,23 @@ export default function DashboardPage() {
       <div className="grid gap-6 lg:grid-cols-2">
         <Card>
           <div className="border-b px-6 py-4">
-            <h2 className="font-semibold text-gray-900">Quick Actions</h2>
+            <h2 className="font-semibold text-gray-900">Acciones Rápidas</h2>
           </div>
           <CardContent className="space-y-3">
             <Link href="/users/new">
-              <Button className="w-full">Create New User</Button>
+              <Button className="w-full">Crear Nuevo Usuario</Button>
             </Link>
             <Link href="/users">
-              <Button variant="outline" className="w-full">View All Users</Button>
+              <Button variant="outline" className="w-full">Ver Todos los Usuarios</Button>
             </Link>
             <Link href="/workspaces">
               <Button variant="outline" className="w-full" leftIcon={<FolderOpen className="h-4 w-4" />}>
-                Workspaces
+                Espacios de Trabajo
               </Button>
             </Link>
             <Link href="/documents">
               <Button variant="outline" className="w-full" leftIcon={<FileText className="h-4 w-4" />}>
-                Documents
+                Documentos
               </Button>
             </Link>
           </CardContent>
@@ -81,7 +81,7 @@ export default function DashboardPage() {
 
         <Card>
           <div className="border-b px-6 py-4">
-            <h2 className="font-semibold text-gray-900">Recent Users</h2>
+            <h2 className="font-semibold text-gray-900">Usuarios Recientes</h2>
           </div>
           <CardContent>
             {isLoading ? (
@@ -104,14 +104,14 @@ export default function DashboardPage() {
                             : 'bg-gray-100 text-gray-700'
                         }`}
                       >
-                        {user.status || 'N/A'}
+                        {user.status === 'active' ? 'Activo' : user.status === 'inactive' ? 'Inactivo' : 'N/A'}
                       </span>
                     </div>
                   </li>
                 ))}
               </ul>
             ) : (
-              <p className="text-sm text-gray-500">No users yet.</p>
+              <p className="text-sm text-gray-500">No hay usuarios aún.</p>
             )}
           </CardContent>
         </Card>

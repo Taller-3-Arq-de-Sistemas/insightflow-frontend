@@ -19,18 +19,18 @@ import { useAuth } from "@/context";
 
 const registerSchema = z
   .object({
-    name: z.string().min(2, "Name must be at least 2 characters"),
-    last_names: z.string().min(2, "Last names must be at least 2 characters"),
-    email: z.string().email("Please enter a valid email"),
-    username: z.string().min(3, "Username must be at least 3 characters"),
-    birth_date: z.string().min(1, "Birth date is required"),
-    address: z.string().min(5, "Address must be at least 5 characters"),
-    phone: z.string().min(8, "Phone must be at least 8 characters"),
-    password: z.string().min(6, "Password must be at least 6 characters"),
+    name: z.string().min(2, "El nombre debe tener al menos 2 caracteres"),
+    last_names: z.string().min(2, "Los apellidos deben tener al menos 2 caracteres"),
+    email: z.string().email("Por favor ingresa un correo válido"),
+    username: z.string().min(3, "El usuario debe tener al menos 3 caracteres"),
+    birth_date: z.string().min(1, "La fecha de nacimiento es requerida"),
+    address: z.string().min(5, "La dirección debe tener al menos 5 caracteres"),
+    phone: z.string().min(8, "El teléfono debe tener al menos 8 caracteres"),
+    password: z.string().min(6, "La contraseña debe tener al menos 6 caracteres"),
     confirmPassword: z.string(),
   })
   .refine((data) => data.password === data.confirmPassword, {
-    message: "Passwords don't match",
+    message: "Las contraseñas no coinciden",
     path: ["confirmPassword"],
   });
 
@@ -58,7 +58,7 @@ export default function RegisterPage() {
       const { confirmPassword, ...registerData } = data;
       await registerUser(registerData);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Failed to create account");
+      setError(err instanceof Error ? err.message : "Error al crear la cuenta");
     } finally {
       setIsLoading(false);
     }
@@ -67,7 +67,7 @@ export default function RegisterPage() {
   return (
     <div>
       <h2 className="mb-6 text-center text-2xl font-bold text-gray-900">
-        Create your account
+        Crea tu cuenta
       </h2>
 
       {error && <ErrorMessage error={error} className="mb-4" />}
@@ -75,43 +75,43 @@ export default function RegisterPage() {
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         <div className="grid grid-cols-2 gap-4">
           <Input
-            label="Name"
+            label="Nombre"
             type="text"
-            placeholder="John"
+            placeholder="Juan"
             leftIcon={<User className="h-5 w-5" />}
             error={errors.name?.message}
             {...register("name")}
           />
 
           <Input
-            label="Last Names"
+            label="Apellidos"
             type="text"
-            placeholder="Doe Smith"
+            placeholder="Pérez García"
             error={errors.last_names?.message}
             {...register("last_names")}
           />
         </div>
 
         <Input
-          label="Email"
+          label="Correo electrónico"
           type="email"
-          placeholder="you@example.com"
+          placeholder="correo@ejemplo.com"
           leftIcon={<Mail className="h-5 w-5" />}
           error={errors.email?.message}
           {...register("email")}
         />
 
         <Input
-          label="Username"
+          label="Nombre de usuario"
           type="text"
-          placeholder="johndoe"
+          placeholder="juanperez"
           leftIcon={<AtSign className="h-5 w-5" />}
           error={errors.username?.message}
           {...register("username")}
         />
 
         <Input
-          label="Birth Date"
+          label="Fecha de nacimiento"
           type="date"
           leftIcon={<Calendar className="h-5 w-5" />}
           error={errors.birth_date?.message}
@@ -119,25 +119,25 @@ export default function RegisterPage() {
         />
 
         <Input
-          label="Address"
+          label="Dirección"
           type="text"
-          placeholder="123 Main St, City"
+          placeholder="Calle Principal 123, Ciudad"
           leftIcon={<MapPin className="h-5 w-5" />}
           error={errors.address?.message}
           {...register("address")}
         />
 
         <Input
-          label="Phone"
+          label="Teléfono"
           type="tel"
-          placeholder="+1 234 567 8900"
+          placeholder="+51 999 999 999"
           leftIcon={<Phone className="h-5 w-5" />}
           error={errors.phone?.message}
           {...register("phone")}
         />
 
         <Input
-          label="Password"
+          label="Contraseña"
           type="password"
           placeholder="••••••••"
           leftIcon={<Lock className="h-5 w-5" />}
@@ -146,7 +146,7 @@ export default function RegisterPage() {
         />
 
         <Input
-          label="Confirm Password"
+          label="Confirmar contraseña"
           type="password"
           placeholder="••••••••"
           leftIcon={<Lock className="h-5 w-5" />}
@@ -155,17 +155,17 @@ export default function RegisterPage() {
         />
 
         <Button type="submit" className="w-full" isLoading={isLoading}>
-          Create account
+          Crear cuenta
         </Button>
       </form>
 
       <p className="mt-6 text-center text-sm text-gray-600">
-        Already have an account?{" "}
+        ¿Ya tienes una cuenta?{" "}
         <Link
           href="/login"
           className="font-medium text-blue-600 hover:text-blue-500"
         >
-          Sign in
+          Inicia sesión
         </Link>
       </p>
     </div>

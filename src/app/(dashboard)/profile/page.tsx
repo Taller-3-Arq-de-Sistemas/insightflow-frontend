@@ -20,14 +20,14 @@ import { useUpdateProfile } from '@/hooks';
 const profileSchema = z.object({
   full_name: z
     .string()
-    .min(1, 'Full name is required')
+    .min(1, 'El nombre completo es requerido')
     .refine(
       (value) => value.trim().split(/\s+/).length >= 3,
-      'Full name must include first name and two last names (at least 3 words)'
+      'El nombre completo debe incluir nombre y dos apellidos (al menos 3 palabras)'
     ),
   username: z
     .string()
-    .min(3, 'Username must be at least 3 characters'),
+    .min(3, 'El usuario debe tener al menos 3 caracteres'),
 });
 
 type ProfileFormData = z.infer<typeof profileSchema>;
@@ -67,16 +67,16 @@ export default function ProfilePage() {
       await refreshUser();
       setSuccess(true);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to update profile');
+      setError(err instanceof Error ? err.message : 'Error al actualizar perfil');
     }
   };
 
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-gray-900">Profile</h1>
+        <h1 className="text-2xl font-bold text-gray-900">Perfil</h1>
         <p className="mt-1 text-gray-600">
-          Update your personal information
+          Actualiza tu información personal
         </p>
       </div>
 
@@ -84,52 +84,52 @@ export default function ProfilePage() {
 
       {success && (
         <div className="rounded-lg border border-green-200 bg-green-50 p-4 text-green-700">
-          Profile updated successfully!
+          Perfil actualizado correctamente
         </div>
       )}
 
       <Card>
         <CardHeader>
-          <CardTitle>Personal Information</CardTitle>
+          <CardTitle>Información Personal</CardTitle>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             <Input
-              label="Full Name"
-              hint="Enter your first name followed by two last names"
+              label="Nombre Completo"
+              hint="Ingresa tu nombre seguido de dos apellidos"
               error={errors.full_name?.message}
               {...register('full_name')}
             />
 
             <Input
-              label="Username"
+              label="Nombre de Usuario"
               error={errors.username?.message}
               {...register('username')}
             />
 
             <div className="border-t pt-6">
               <h3 className="mb-4 text-sm font-medium text-gray-500">
-                Read-only Information
+                Información de Solo Lectura
               </h3>
               <div className="grid gap-4 sm:grid-cols-2">
                 <div>
-                  <p className="text-sm font-medium text-gray-500">Email</p>
+                  <p className="text-sm font-medium text-gray-500">Correo</p>
                   <p className="mt-1 text-gray-900">{user?.email}</p>
                 </div>
                 <div>
-                  <p className="text-sm font-medium text-gray-500">Phone</p>
+                  <p className="text-sm font-medium text-gray-500">Teléfono</p>
                   <p className="mt-1 text-gray-900">{user?.phone}</p>
                 </div>
                 <div>
-                  <p className="text-sm font-medium text-gray-500">Birth Date</p>
+                  <p className="text-sm font-medium text-gray-500">Fecha de Nacimiento</p>
                   <p className="mt-1 text-gray-900">{user?.birth_date}</p>
                 </div>
                 <div>
-                  <p className="text-sm font-medium text-gray-500">Address</p>
+                  <p className="text-sm font-medium text-gray-500">Dirección</p>
                   <p className="mt-1 text-gray-900">{user?.address}</p>
                 </div>
                 <div>
-                  <p className="text-sm font-medium text-gray-500">Status</p>
+                  <p className="text-sm font-medium text-gray-500">Estado</p>
                   <p className="mt-1">
                     <span
                       className={`inline-flex rounded-full px-2 py-1 text-xs font-medium ${
@@ -138,12 +138,12 @@ export default function ProfilePage() {
                           : 'bg-gray-100 text-gray-700'
                       }`}
                     >
-                      {user?.status || 'N/A'}
+                      {user?.status === 'active' ? 'Activo' : user?.status === 'inactive' ? 'Inactivo' : 'N/A'}
                     </span>
                   </p>
                 </div>
                 <div>
-                  <p className="text-sm font-medium text-gray-500">Role</p>
+                  <p className="text-sm font-medium text-gray-500">Rol</p>
                   <p className="mt-1 text-gray-900 capitalize">{role || 'N/A'}</p>
                 </div>
               </div>
@@ -155,7 +155,7 @@ export default function ProfilePage() {
                 isLoading={updateProfile.isPending}
                 leftIcon={<Save className="h-4 w-4" />}
               >
-                Save Changes
+                Guardar Cambios
               </Button>
             </div>
           </form>

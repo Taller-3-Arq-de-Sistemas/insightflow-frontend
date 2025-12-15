@@ -12,7 +12,7 @@ export default function AuthLayout({ children }: AuthLayoutProps) {
         <div className="mb-8 text-center">
           <h1 className="text-3xl font-bold text-blue-600">InsightFlow</h1>
           <p className="mt-2 text-gray-600">
-            User management system - InsightFlow
+            Sistema de gestión de usuarios - InsightFlow
           </p>
         </div>
 

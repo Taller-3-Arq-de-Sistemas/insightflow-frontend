@@ -56,15 +56,15 @@ export default function UsersPage() {
       {/* Header */}
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Users</h1>
+          <h1 className="text-2xl font-bold text-gray-900">Usuarios</h1>
           <p className="mt-1 text-gray-600">
-            {isAdmin ? 'Manage all users in the system' : 'View all users in the system'}
+            {isAdmin ? 'Administra todos los usuarios del sistema' : 'Ver todos los usuarios del sistema'}
           </p>
         </div>
         {isAdmin && (
           <Link href="/users/new">
             <Button leftIcon={<Plus className="h-4 w-4" />}>
-              New User
+              Nuevo Usuario
             </Button>
           </Link>
         )}
@@ -73,7 +73,7 @@ export default function UsersPage() {
       {/* Search */}
       <div className="max-w-md">
         <Input
-          placeholder="Search users..."
+          placeholder="Buscar usuarios..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           leftIcon={<Search className="h-5 w-5" />}
@@ -88,23 +88,23 @@ export default function UsersPage() {
           </div>
         ) : error ? (
           <div className="p-6 text-center text-red-600">
-            Failed to load users. Please try again.
+            Error al cargar usuarios. Por favor intenta de nuevo.
           </div>
         ) : !filteredUsers || filteredUsers.length === 0 ? (
           <EmptyState
-            title={searchQuery ? 'No users found' : 'No users yet'}
+            title={searchQuery ? 'No se encontraron usuarios' : 'No hay usuarios aún'}
             description={
               searchQuery
-                ? 'Try adjusting your search query'
+                ? 'Intenta ajustar tu búsqueda'
                 : isAdmin
-                  ? 'Create your first user to get started.'
-                  : 'No users available.'
+                  ? 'Crea tu primer usuario para comenzar.'
+                  : 'No hay usuarios disponibles.'
             }
             action={
               !searchQuery && isAdmin && (
                 <Link href="/users/new">
                   <Button leftIcon={<Plus className="h-4 w-4" />}>
-                    Create User
+                    Crear Usuario
                   </Button>
                 </Link>
               )
@@ -114,12 +114,12 @@ export default function UsersPage() {
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>Name</TableHead>
-                <TableHead>Email</TableHead>
-                <TableHead>Username</TableHead>
-                <TableHead>Phone</TableHead>
-                <TableHead>Status</TableHead>
-                {isAdmin && <TableHead className="text-right">Actions</TableHead>}
+                <TableHead>Nombre</TableHead>
+                <TableHead>Correo</TableHead>
+                <TableHead>Usuario</TableHead>
+                <TableHead>Teléfono</TableHead>
+                <TableHead>Estado</TableHead>
+                {isAdmin && <TableHead className="text-right">Acciones</TableHead>}
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -141,7 +141,7 @@ export default function UsersPage() {
                             : 'bg-gray-100 text-gray-700'
                       }`}
                     >
-                      {user.status || 'N/A'}
+                      {user.status === 'active' ? 'Activo' : user.status === 'inactive' ? 'Inactivo' : 'N/A'}
                     </span>
                   </TableCell>
                   {isAdmin && (
@@ -150,7 +150,7 @@ export default function UsersPage() {
                         <button
                           onClick={() => setUserToDelete(user)}
                           className="rounded p-1 text-gray-400 hover:bg-gray-100 hover:text-red-600"
-                          title="Delete"
+                          title="Eliminar"
                         >
                           <Trash2 className="h-4 w-4" />
                         </button>
@@ -168,27 +168,27 @@ export default function UsersPage() {
       <Modal
         isOpen={!!userToDelete}
         onClose={() => setUserToDelete(null)}
-        title="Delete User"
+        title="Eliminar Usuario"
         size="sm"
       >
         <div className="space-y-4">
           <p className="text-gray-600">
-            Are you sure you want to delete{' '}
+            ¿Estás seguro de que deseas eliminar a{' '}
             <span className="font-medium text-gray-900">
               {userToDelete?.name} {userToDelete?.last_names}
             </span>
-            ? This action cannot be undone.
+            ? Esta acción no se puede deshacer.
           </p>
           <div className="flex justify-end gap-3">
             <Button variant="outline" onClick={() => setUserToDelete(null)}>
-              Cancel
+              Cancelar
             </Button>
             <Button
               variant="danger"
               onClick={handleDelete}
               isLoading={deleteUser.isPending}
             >
-              Delete
+              Eliminar
             </Button>
           </div>
         </div>

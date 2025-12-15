@@ -9,9 +9,9 @@ import { useAuth } from "@/context";
 import { FullPageSpinner } from "@/components/ui";
 
 const navigationItems = [
-  { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
-  { name: "Users", href: "/users", icon: Users },
-  { name: "Profile", href: "/profile", icon: User },
+  { name: "Panel", href: "/dashboard", icon: LayoutDashboard },
+  { name: "Usuarios", href: "/users", icon: Users },
+  { name: "Perfil", href: "/profile", icon: User },
 ];
 
 interface DashboardLayoutProps {
@@ -60,7 +60,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
           {/* Logo */}
           <div className="flex h-16 items-center justify-between border-b px-4">
             <Link href="/dashboard" className="text-xl font-bold text-blue-600">
-              Users management
+              Gestión de Usuarios
             </Link>
             <button
               onClick={() => setSidebarOpen(false)}
@@ -115,7 +115,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
               className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-100"
             >
               <LogOut className="h-5 w-5" />
-              Logout
+              Cerrar Sesión
             </button>
           </div>
         </div>
@@ -131,7 +131,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
           >
             <Menu className="h-6 w-6" />
           </button>
-          <span className="text-lg font-semibold text-gray-900">Users App</span>
+          <span className="text-lg font-semibold text-gray-900">App de Usuarios</span>
         </header>
 
         {/* Page content */}
