@@ -1,0 +1,711 @@
+{
+	"info": {
+		"_postman_id": "09630be8-54ed-4e57-9d54-4b62b373af5c",
+		"name": "Taller 3 Arquitecura de Sistemas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29548929"
+	},
+	"item": [
+		{
+			"name": "Workspaces",
+			"item": [
+				{
+					"name": "Get Workspaces",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5250/api/workspaces/user/d084f70c-238d-44a3-a7d0-1a7795325c34",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5250",
+							"path": [
+								"api",
+								"workspaces",
+								"user",
+								"d084f70c-238d-44a3-a7d0-1a7795325c34"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Workspace",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "Name",
+									"value": "Proyecto Mars",
+									"type": "text"
+								},
+								{
+									"key": "Description",
+									"value": "Planificación de la migración del sistema.",
+									"type": "text"
+								},
+								{
+									"key": "Theme",
+									"value": "Tecnología",
+									"type": "text"
+								},
+								{
+									"key": "Image",
+									"type": "file",
+									"src": "/C:/Users/yamca/OneDrive/Desktop/Yamir/Imagenes/Workspace.jpeg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5250/api/workspaces/d084f70c-238d-44a3-a7d0-1a7795325c34",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5250",
+							"path": [
+								"api",
+								"workspaces",
+								"d084f70c-238d-44a3-a7d0-1a7795325c34"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Workspace by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5250/api/workspaces/26e965f8-3d1f-4cf9-b5e2-b1698c60c2d4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5250",
+							"path": [
+								"api",
+								"workspaces",
+								"26e965f8-3d1f-4cf9-b5e2-b1698c60c2d4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Workspace",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "Name",
+									"value": "Proyecto Jupiter",
+									"type": "text"
+								},
+								{
+									"key": "Description",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "Theme",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "Image",
+									"type": "file",
+									"src": [],
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5250/api/workspaces/c3905a0e-b312-4531-ad59-067e263db77a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5250",
+							"path": [
+								"api",
+								"workspaces",
+								"c3905a0e-b312-4531-ad59-067e263db77a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Soft Delete workspace",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5250/api/workspaces/26e965f8-3d1f-4cf9-b5e2-b1698c60c2d4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5250",
+							"path": [
+								"api",
+								"workspaces",
+								"26e965f8-3d1f-4cf9-b5e2-b1698c60c2d4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Health",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5250/api/workspaces/health",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5250",
+							"path": [
+								"api",
+								"workspaces",
+								"health"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Documents",
+			"item": [
+				{
+					"name": "Create Document",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Prueba de Taaller 3\",\r\n  \"icon\": \"🧪\",\r\n  \"workspace_id\": \"workspace-123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3100/documents",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3100",
+							"path": [
+								"documents"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Document",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3100/documents/22825c47-da3f-463a-ac13-4f62bc4ebd9c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3100",
+							"path": [
+								"documents",
+								"22825c47-da3f-463a-ac13-4f62bc4ebd9c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Document",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"content\": {\r\n     \"ops\": [{ \"insert\": \"Editando el contenido...\" }]\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3100/documents/cb0fafd6-de71-45df-ab0b-5b673865db63",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3100",
+							"path": [
+								"documents",
+								"cb0fafd6-de71-45df-ab0b-5b673865db63"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Document",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3100/documents/22825c47-da3f-463a-ac13-4f62bc4ebd9c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3100",
+							"path": [
+								"documents",
+								"22825c47-da3f-463a-ac13-4f62bc4ebd9c"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "Register",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Jairo\",\n    \"last_names\": \"Calcina Valda\",\n    \"email\": \"jairo.calcina@example.com\",\n    \"username\": \"broukt\",\n    \"birth_date\": \"2000-10-28\",\n    \"address\": \"Some random address\",\n    \"phone\": \"123456789\",\n    \"password\": \"AReallyGoodP4ssw0rd\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{usersUrl}}/{{authContext}}/register",
+									"host": [
+										"{{usersUrl}}"
+									],
+									"path": [
+										"{{authContext}}",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"jairo.calcina@admin.com\",\n    \"password\": \"AReallyGoodP4ssw0rd\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{usersUrl}}/{{authContext}}/login",
+									"host": [
+										"{{usersUrl}}"
+									],
+									"path": [
+										"{{authContext}}",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Logout",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{usersUrl}}/{{authContext}}/logout",
+									"host": [
+										"{{usersUrl}}"
+									],
+									"path": [
+										"{{authContext}}",
+										"logout"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Validate",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjU4MzgzMzEsInJvbGUiOiJ1c2VyIiwic3ViIjoiNmRhOGRhMDktMWMwNC00NmRmLTgyZDYtM2E1MjFmNDZhMGU2In0.s0f0XuHakHpyJeFtJVbTVBQgehzHd9nEeWO4mMcQLzg\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{usersUrl}}/{{authContext}}/validate",
+									"host": [
+										"{{usersUrl}}"
+									],
+									"path": [
+										"{{authContext}}",
+										"validate"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Users",
+					"item": [
+						{
+							"name": "Create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Jairo\",\n    \"last_names\": \"Calcina Valda\",\n    \"email\": \"jairo.calcina@example.com\",\n    \"username\": \"jairo\",\n    \"birth_date\": \"2000-10-28\",\n    \"address\": \"Some random address\",\n    \"phone\": \"123456789\",\n    \"password\": \"AReallyGoodP4ssw0rd\",\n    \"role\": \"user\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{usersUrl}}/{{usersContext}}",
+									"host": [
+										"{{usersUrl}}"
+									],
+									"path": [
+										"{{usersContext}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List all",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						},
+						{
+							"name": "Get by ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{usersUrl}}/{{usersContext}}/7b9f1d65-30ad-4e8c-8758-7d761febf4aa",
+									"host": [
+										"{{usersUrl}}"
+									],
+									"path": [
+										"{{usersContext}}",
+										"7b9f1d65-30ad-4e8c-8758-7d761febf4aa"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"full_name\": \"Ignacio Avendano Ramirez\",\n    \"username\": \"funktastic\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{usersUrl}}/{{usersContext}}/e62edef1-23a0-4753-ad96-5392eb6bd9d3",
+									"host": [
+										"{{usersUrl}}"
+									],
+									"path": [
+										"{{usersContext}}",
+										"e62edef1-23a0-4753-ad96-5392eb6bd9d3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{usersUrl}}/{{usersContext}}/7b9f1d65-30ad-4e8c-8758-7d761febf4aa",
+									"host": [
+										"{{usersUrl}}"
+									],
+									"path": [
+										"{{usersContext}}",
+										"7b9f1d65-30ad-4e8c-8758-7d761febf4aa"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Users",
+					"item": [
+						{
+							"name": "Create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Jairo\",\n    \"last_names\": \"Calcina Valda\",\n    \"email\": \"jairo.calcina@example.com\",\n    \"username\": \"jairo\",\n    \"birth_date\": \"2000-10-28\",\n    \"address\": \"Some random address\",\n    \"phone\": \"123456789\",\n    \"password\": \"AReallyGoodP4ssw0rd\",\n    \"role\": \"user\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{usersUrl}}/{{usersContext}}",
+									"host": [
+										"{{usersUrl}}"
+									],
+									"path": [
+										"{{usersContext}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List all",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						},
+						{
+							"name": "Get by ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{usersUrl}}/{{usersContext}}/7b9f1d65-30ad-4e8c-8758-7d761febf4aa",
+									"host": [
+										"{{usersUrl}}"
+									],
+									"path": [
+										"{{usersContext}}",
+										"7b9f1d65-30ad-4e8c-8758-7d761febf4aa"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"full_name\": \"Ignacio Avendano Ramirez\",\n    \"username\": \"funktastic\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{usersUrl}}/{{usersContext}}/e62edef1-23a0-4753-ad96-5392eb6bd9d3",
+									"host": [
+										"{{usersUrl}}"
+									],
+									"path": [
+										"{{usersContext}}",
+										"e62edef1-23a0-4753-ad96-5392eb6bd9d3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{usersUrl}}/{{usersContext}}/7b9f1d65-30ad-4e8c-8758-7d761febf4aa",
+									"host": [
+										"{{usersUrl}}"
+									],
+									"path": [
+										"{{usersContext}}",
+										"7b9f1d65-30ad-4e8c-8758-7d761febf4aa"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "usersUrl",
+			"value": ""
+		},
+		{
+			"key": "usersContext",
+			"value": ""
+		},
+		{
+			"key": "authContext",
+			"value": ""
+		},
+		{
+			"key": "token",
+			"value": ""
+		}
+	]
+}
