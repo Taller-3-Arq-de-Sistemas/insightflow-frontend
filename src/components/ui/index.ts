@@ -12,3 +12,16 @@ export {
   TableHead,
   TableCell,
 } from "./Table";
+export { Label } from "./label";
+export { Badge } from "./badge";
+export { Textarea } from "./textarea";
+export {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  DialogFooter,
+  DialogClose,
+} from "./dialog";

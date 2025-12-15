@@ -1,5 +1,5 @@
-import { WorkspacesListPage } from "@/src/views/WorkspacesListPage";
+import { WorkspacesListPage } from "@/views/WorkspacesListPage";
 
 export default function Workspaces() {
-    return <WorkspacesListPage />;
+  return <WorkspacesListPage />;
 }

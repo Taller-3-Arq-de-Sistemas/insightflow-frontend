@@ -1,10 +1,10 @@
-import { WorkspaceDetailWrapper } from '@/src/components/workspaces/WorkspaceDetailWrapper';
-import { Suspense } from 'react';
+import { WorkspaceDetailWrapper } from "@/components/workspaces/WorkspaceDetailWrapper";
+import { Suspense } from "react";
 
 export default function WorkspaceDetailRoute() {
-    return (
+  return (
     <Suspense fallback={<div className="p-12 text-center">Cargando...</div>}>
-        <WorkspaceDetailWrapper />
+      <WorkspaceDetailWrapper />
     </Suspense>
-    );
+  );
 }

@@ -1,6 +1,6 @@
 'use client';
 
-import { Users, UserCheck, UserX, Clock } from 'lucide-react';
+import { Users, UserCheck, UserX, Clock, FolderOpen, FileText } from 'lucide-react';
 import Link from 'next/link';
 import { Card, CardContent, Button, Spinner } from '@/components/ui';
 import { useUsers } from '@/hooks';
@@ -65,6 +65,16 @@ export default function DashboardPage() {
             </Link>
             <Link href="/users">
               <Button variant="outline" className="w-full">View All Users</Button>
+            </Link>
+            <Link href="/workspaces">
+              <Button variant="outline" className="w-full" leftIcon={<FolderOpen className="h-4 w-4" />}>
+                Workspaces
+              </Button>
+            </Link>
+            <Link href="/documents">
+              <Button variant="outline" className="w-full" leftIcon={<FileText className="h-4 w-4" />}>
+                Documents
+              </Button>
             </Link>
           </CardContent>
         </Card>

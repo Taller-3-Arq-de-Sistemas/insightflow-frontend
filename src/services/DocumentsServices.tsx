@@ -1,6 +1,6 @@
 import axios from "axios";
-import { DocumentResponse } from "@/src/interfaces/documents/DocumentResponse";
-import { CreateDocumentDTO } from "@/src/interfaces/documents/CreateDocumentDTO";
+import { DocumentResponse } from "@/interfaces/documents/DocumentResponse";
+import { CreateDocumentDTO } from "@/interfaces/documents/CreateDocumentDTO";
 
 const API_URL = process.env.NEXT_PUBLIC_API_DOCUMENTS_URL || "";
 

@@ -1,7 +1,7 @@
-import { useState } from 'react';
-import { DocumentResponse } from '@/src/interfaces/documents/DocumentResponse';
-import { CreateDocumentDTO } from '@/src/interfaces/documents/CreateDocumentDTO';
-import { DocumentsService } from '@/src/services/DocumentsServices';
+import { useState } from "react";
+import { DocumentResponse } from "@/interfaces/documents/DocumentResponse";
+import { CreateDocumentDTO } from "@/interfaces/documents/CreateDocumentDTO";
+import { DocumentsService } from "@/services/DocumentsServices";
 
 export const useDocuments = () => {
   const [document, setDocument] = useState<DocumentResponse | null>(null);
@@ -23,9 +23,9 @@ export const useDocuments = () => {
     } catch (err: any) {
       console.error(err);
       if (err.response && err.response.status === 404) {
-        setError('Documento no encontrado (ID incorrecto o eliminado).');
+        setError("Documento no encontrado (ID incorrecto o eliminado).");
       } else {
-        setError('Error de conexión o configuración de URL.');
+        setError("Error de conexión o configuración de URL.");
       }
       setDocument(null);
     } finally {
@@ -48,7 +48,7 @@ export const useDocuments = () => {
     } catch (err: any) {
       console.error(err);
       const serverMsg = err.response?.data?.error;
-      setError(serverMsg || 'Error al crear el documento.');
+      setError(serverMsg || "Error al crear el documento.");
     } finally {
       setLoading(false);
     }
@@ -69,7 +69,7 @@ export const useDocuments = () => {
       return updatedDoc;
     } catch (err: any) {
       console.error(err);
-      setError('Error al actualizar el documento.');
+      setError("Error al actualizar el documento.");
     } finally {
       setLoading(false);
     }
@@ -81,28 +81,29 @@ export const useDocuments = () => {
    * @returns Retorna void.
    */
   const deleteDocument = async (id: string) => {
-    if (!confirm("¿Estás seguro de enviar este documento a la papelera?")) return;
+    if (!confirm("¿Estás seguro de enviar este documento a la papelera?"))
+      return;
 
     setLoading(true);
     try {
       await DocumentsService.delete(id);
-      setDocument(null); 
+      setDocument(null);
       alert("Documento eliminado correctamente.");
     } catch (err: any) {
       console.error(err);
-      setError('No se pudo eliminar el documento.');
+      setError("No se pudo eliminar el documento.");
     } finally {
       setLoading(false);
     }
   };
 
   return {
-    document,      
-    loading,        
-    error,          
-    loadDocument,   
+    document,
+    loading,
+    error,
+    loadDocument,
     createDocument,
     updateDocument,
-    deleteDocument
+    deleteDocument,
   };
 };

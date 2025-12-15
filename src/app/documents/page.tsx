@@ -1,4 +1,4 @@
-import DocumentsManager from "@/src/views/DocumentsManager";
+import DocumentsManager from "@/views/DocumentsManager";
 
 export default function DocumentsPage() {
   return <DocumentsManager />;

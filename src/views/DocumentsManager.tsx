@@ -1,19 +1,19 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useDocuments } from "@/src/hooks/useDocuments";
-import { Button } from "@/src/components/ui/button";
-import { Input } from "@/src/components/ui/input";
-import { Textarea } from "@/src/components/ui/textarea";
+import { useDocuments } from "@/hooks/useDocuments";
 import {
+  Button,
+  Input,
+  Textarea,
   Card,
   CardHeader,
   CardTitle,
   CardContent,
   CardFooter,
-} from "@/src/components/ui/card";
-import { Label } from "@/src/components/ui/label";
-import { Badge } from "@/src/components/ui/badge";
+  Label,
+  Badge,
+} from "@/components/ui";
 
 export default function DocumentsManager() {
   const {
