@@ -103,9 +103,6 @@ export default function DocumentsManager() {
                 value={workspaceId}
                 onChange={(e) => setWorkspaceId(e.target.value)}
               />
-              <p className="text-[10px] text-muted-foreground uppercase tracking-wide">
-                Obtenlo del módulo de tu compañero
-              </p>
             </div>
             <div className="grid grid-cols-4 gap-4">
               <div className="col-span-1 space-y-2">
@@ -164,9 +161,6 @@ export default function DocumentsManager() {
                   Buscar
                 </Button>
               </div>
-              <p className="text-[10px] text-muted-foreground uppercase tracking-wide">
-                Usa el ID generado al crear
-              </p>
             </div>
           </CardContent>
         </Card>
