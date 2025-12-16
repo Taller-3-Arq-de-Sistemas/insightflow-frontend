@@ -51,7 +51,7 @@ Update the API URLs as needed:
 NEXT_PUBLIC_API_USERS_URL=http://localhost:8080/api/v1
 NEXT_PUBLIC_API_WORKSPACES_URL=https://insightflow-workspaces.onrender.com/api
 NEXT_PUBLIC_API_DOCUMENTS_URL=https://insightflow-documents-y31i.onrender.com/documents
-NEXT_PUBLIC_API_TASKS_URL=
+NEXT_PUBLIC_API_TASKS_URL=http://localhost:3000/api/v1/
 NEXT_PUBLIC_TEST_USER_ID=your-test-user-id
 ```
 
@@ -108,7 +108,8 @@ The application will be running at http://localhost:3000.
 src/
 ├── api/                        # HTTP clients and services for Users API
 │   ├── clients/                # Axios instances with interceptors
-│   └── services/               # Auth and Users service modules
+│   ├── services/               # Auth and Users service modules
+│   └── tasks/                  # Tasks service
 ├── app/                        # Next.js App Router pages
 │   ├── (auth)/                 # Login and register pages
 │   ├── (dashboard)/            # Dashboard, users, and profile pages
@@ -166,6 +167,16 @@ This frontend connects to multiple InsightFlow microservices:
 | POST | `/documents` | Create a new document |
 | PATCH | `/documents/{id}` | Update document |
 | DELETE | `/documents/{id}` | Delete document (soft delete) |
+
+### Tasks Service
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/tasks` | Get tasks |
+| GET | `/tasks/{id}` | Get task by ID |
+| POST | `/tasks` | Create a new task |
+| PATCH | `/tasks/{id}` | Update task |
+| DELETE | `/tasks/{id}` | Delete task (soft delete) |
 
 ## Default Credentials
 
